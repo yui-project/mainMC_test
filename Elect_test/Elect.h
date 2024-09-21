@@ -3,7 +3,6 @@ class Elect
 { // NOTE:メインマイコンからアクセスできるコンポーネントの消費電量を取得するためのクラス
 private:
 // TODO ピン番号の確認
-#define cs1 16 //NOTE: A/DC１つ目
 
     float volt3 = 3.3;
     int McpToAnalogNum = 4095;

@@ -12,7 +12,6 @@ void setup()
     SPI5.setDataMode(SPI_MODE0);
     SPI5.setBitOrder(MSBFIRST);
 
-    pinMode(cs1, OUTPUT);
 }
 
 
