@@ -3,8 +3,17 @@
 #include <SPI.h>
 IoExpander::IoExpander()
 {
-    // TODO 初期設定ではデコーダは7番をLOWにしている
+}
+
+void IoExpander::init()
+{
+    decoder.init();
+   // TODO 初期設定ではデコーダは7番をLOWにしている
     decoder.write(7);
+    SPI5.begin();
+    SPI5.setBitOrder(MSBFIRST);
+    SPI5.setDataMode(SPI_MODE0);
+    SPI5.setClockDivider(SPI_CLOCK_DIV128);
 
     // MCP23S08の初期設定
     // 全てのピンを出力に設定
@@ -12,6 +21,7 @@ IoExpander::IoExpander()
     // 全てのピンをLOWに設定
     write(MCP23S08_GPIO, gpioState);
 }
+
 void IoExpander::setPin(int pin, int value)
 {
     if (value == HIGH)
