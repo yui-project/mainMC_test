@@ -1,5 +1,6 @@
 {
     "configuration": "Core=Main,Memory=768,Debug=Disabled,UploadSpeed=115200",
     "board": "SPRESENSE:spresense:spresense",
-    "sketch": "Elect_test\\Elect_test.ino"
+    "sketch": "AntennaDeployment_test\\AntennaDeployment_test.ino",
+    "port": "COM14"
 }

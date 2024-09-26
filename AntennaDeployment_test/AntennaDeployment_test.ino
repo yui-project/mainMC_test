@@ -1,12 +1,12 @@
 #include "AntennaDeployment.h"
 #include "IoExpander.h"
-#include "SPI.h"
+#include <SPI.h>
 
 AntennaDeployment antenna;
 IoExpander ex;
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
   SPI5.begin();
   SPI5.setBitOrder(MSBFIRST);
   SPI5.setDataMode(SPI_MODE0);
@@ -16,7 +16,7 @@ void setup() {
 void loop() {
   /*if(antenna.isOpen() == true){
       Serial.println("CLOSE!!!");
-  } 
+  }
   else{
     Serial.println("OPEN!!!");
   }*/
@@ -24,10 +24,6 @@ void loop() {
   antenna.startUp();
   Serial.println("END!!!");
   delay(1000);*/
-
+  Serial.println("OPEN!!!");
   ex.setPin(6,HIGH);
-  delay(3000);
-  ex.setPin(6,LOW);
-  delay(3000);
-  
 }
