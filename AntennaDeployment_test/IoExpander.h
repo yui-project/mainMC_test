@@ -16,6 +16,7 @@ private:
 
 public:
     IoExpander();
+    void init();
     void setPin(int pin, int value);
     void write(byte reg, byte data);
     byte read(byte reg);

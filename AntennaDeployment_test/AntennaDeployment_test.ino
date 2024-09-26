@@ -1,16 +1,11 @@
 #include "AntennaDeployment.h"
 #include "IoExpander.h"
-#include <SPI.h>
 
 AntennaDeployment antenna;
 IoExpander ex;
 
 void setup() {
-  Serial.begin(115200);
-  SPI5.begin();
-  SPI5.setBitOrder(MSBFIRST);
-  SPI5.setDataMode(SPI_MODE0);
-  SPI5.setClockDivider(SPI_CLOCK_DIV128);
+  ex.init();
 }
 
 void loop() {
