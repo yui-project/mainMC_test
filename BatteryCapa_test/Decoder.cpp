@@ -3,6 +3,10 @@
 
 Decoder::Decoder()
 {
+}
+
+void Decoder::init()
+{
     pinMode(PIN_A, OUTPUT);
     pinMode(PIN_B, OUTPUT);
     pinMode(PIN_C, OUTPUT);
