@@ -48,8 +48,8 @@ byte IoExpander::read(byte reg)
 {
     decoder.write(6);
     SPI5.transfer(0x41); // MCP23S08のアドレス（読み取りは0x41）
-    SPI5.transfer(reg);
+    SPI5.transfer(0x09);
     byte data = SPI5.transfer(0x00);
     decoder.write(7);
-    return data;
+    return (data >> reg);
 }
