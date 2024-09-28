@@ -11,11 +11,25 @@ void setup()
     SPI5.setClockDivider(SPI_CLOCK_DIV128);
     SPI5.setDataMode(SPI_MODE0);
     SPI5.setBitOrder(MSBFIRST);
-
+    pinMode(20, OUTPUT);
+    pinMode(21, OUTPUT);
 }
 
 
 void loop()
 {
-    //NOTE:以下に試験時に欲しい処理を書く
+    digitalWrite(20, HIGH);
+    digitalWrite(21, HIGH);
+    Serial.print("BatteryVolt:");
+    Serial.println(El.getElectVolt(3));
+    Serial.print("GETELECTLORAVOLT:");
+    Serial.println(El.getElectVolt(1));
+    Serial.print("GETELECTLORACURRENT:");
+    Serial.println(El.getElectCurrent(1));
+    Serial.print("GETELECTBACKUPVOLT:");
+    Serial.println(El.getElectVolt(2));
+    Serial.print("GETELECTBACKUPCURRENT:");
+    Serial.println(El.getElectCurrent(2));
+    Serial.println("----------------------------------");
+    delay(1000);
 }
