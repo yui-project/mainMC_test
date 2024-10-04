@@ -1,6 +1,6 @@
 {
     "configuration": "Core=Main,Memory=768,Debug=Disabled,UploadSpeed=115200",
     "board": "SPRESENSE:spresense:spresense",
-    "sketch": "selectPinSwitch_test\\selectPinSwitch_test.ino",
+    "sketch": "SpiFram_test\\SpiFram_test.ino",
     "port": "COM14"
 }
