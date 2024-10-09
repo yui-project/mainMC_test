@@ -187,6 +187,7 @@ void ModeTransition::normal()
     // TODO HKデータの保存
     // TODO 通信確認とパラメータ設定
 
+    //TODO 修正！
     if ((bool)((i2cFram.read(0x56, 8) & 0x00) >> 0) == true)
     {
       Serial.println("モード4への移行");

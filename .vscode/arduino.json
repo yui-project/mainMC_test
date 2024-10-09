@@ -1,6 +1,6 @@
 {
     "configuration": "Core=Main,Memory=768,Debug=Disabled,UploadSpeed=115200",
     "board": "SPRESENSE:spresense:spresense",
-    "sketch": "RTC_test\\RTC_test.ino",
+    "sketch": "ModeTrantision_test\\ModeTrantision_test.ino",
     "port": "COM14"
 }

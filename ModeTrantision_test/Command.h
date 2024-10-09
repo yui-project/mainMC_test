@@ -3,7 +3,6 @@
 #include "CommunicationWithPowerMC.h"
 #include "I2cFram.h"
 
-
 #define ACK 0x06
 
 extern bool counterForAntennaDeployment;
@@ -21,17 +20,17 @@ private:
 
     uint8_t Fram[14];
 
-    uint32_t mode2_endTime = 1103456;
-    uint32_t mode3_endTime = 1012345;
+    uint32_t mode2_endTime = 0;
+    uint32_t mode3_endTime = 0;
 
-    bool backupA_downlink_check = true;
-    bool backupB_downlink_check = true;
-    bool LoRaA_downlink_check = true;
-    bool LoRaB_downlink_check = true;
-    bool backupA_uplink_check = true;
-    bool backupB_uplink_check = true;
-    bool LoRaA_uplink_check = true;
-    bool LoRaB_uplink_check = true;
+    bool backupA_downlink_check = false;
+    bool backupB_downlink_check = false;
+    bool LoRaA_downlink_check = false;
+    bool LoRaB_downlink_check = false;
+    bool backupA_uplink_check = false;
+    bool backupB_uplink_check = false;
+    bool LoRaA_uplink_check = false;
+    bool LoRaB_uplink_check = false;
 
     bool backupA_downlink_no = false;
     bool backupB_downlink_no = false;

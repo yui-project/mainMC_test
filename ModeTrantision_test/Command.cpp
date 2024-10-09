@@ -219,8 +219,30 @@ bool Command::execute(int subject)
         Serial.print(ad_parameter);
         Serial.print(" ");
         Serial.println(TSUKUTO_time);
+        delay(10000);
         return true;
     case 40:
+
+        backupA_downlink_check = false;
+        backupB_downlink_check = false;
+        LoRaA_downlink_check = false;
+        LoRaB_downlink_check = false;
+        backupA_uplink_check = false;
+        backupB_uplink_check = false;
+        LoRaA_uplink_check = false;
+        LoRaB_uplink_check = false;
+
+        backupA_downlink_no = false;
+        backupB_downlink_no = false;
+        LoRaA_downlink_no = false;
+        LoRaB_downlink_no = false;
+        backupA_uplink_no = false;
+        backupB_uplink_no = false;
+        LoRaA_uplink_no = false;
+        LoRaB_uplink_no = false;
+
+        mode2_endFlag = false;
+        mode3_endFlag = false;
 
         Fram[0] = (uint8_t)((mode2_endTime & 0x00FF0000) >> 16);
         Fram[1] = (uint8_t)((mode2_endTime & 0x0000FF00) >> 8);
@@ -249,6 +271,55 @@ bool Command::execute(int subject)
         Serial.println("RESET FRAM");
         I2cFram.reset(0x56, 0x57, 0x00);
         return true;
+
+    case 42:
+        Serial.println("DOWNLINK OK");
+
+        backupA_downlink_check = true;
+        backupB_downlink_check = true;
+        LoRaA_downlink_check = true;
+        LoRaB_downlink_check = true;
+        backupA_uplink_check = false;
+        backupB_uplink_check = false;
+        LoRaA_uplink_check = false;
+        LoRaB_uplink_check = false;
+
+        Fram[6] = (uint8_t)((((uint8_t)backupA_downlink_check << 7) & 0xFF) | (((uint8_t)backupB_downlink_check << 6) & 0x7F) | (((uint8_t)LoRaA_downlink_check << 5) & 0x3F) | (((uint8_t)LoRaB_downlink_check << 4) & 0x1F) | (((uint8_t)backupA_uplink_check << 3) & 0x0F) | (((uint8_t)backupB_uplink_check << 2) & 0x07) | (((uint8_t)LoRaA_uplink_check << 1) & 0x03) | (((uint8_t)LoRaB_uplink_check << 0) & 0x01));
+
+        I2cFram.write(0x56, 6, Fram[6]);
+
+        delay(5000);
+        return true;
+
+    case 43:
+        Serial.println("UPLINK OK");
+
+        backupA_downlink_check = true;
+        backupB_downlink_check = true;
+        LoRaA_downlink_check = true;
+        LoRaB_downlink_check = true;
+        backupA_uplink_check = true;
+        backupB_uplink_check = true;
+        LoRaA_uplink_check = true;
+        LoRaB_uplink_check = true;
+
+        Fram[6] = (uint8_t)((((uint8_t)backupA_downlink_check << 7) & 0xFF) | (((uint8_t)backupB_downlink_check << 6) & 0x7F) | (((uint8_t)LoRaA_downlink_check << 5) & 0x3F) | (((uint8_t)LoRaB_downlink_check << 4) & 0x1F) | (((uint8_t)backupA_uplink_check << 3) & 0x0F) | (((uint8_t)backupB_uplink_check << 2) & 0x07) | (((uint8_t)LoRaA_uplink_check << 1) & 0x03) | (((uint8_t)LoRaB_uplink_check << 0) & 0x01));
+
+        I2cFram.write(0x56, 6, Fram[6]);
+
+        delay(5000);
+        return true;
+
+    case 44:
+        Serial.println("MODE3 END");
+        mode2_endFlag = true;
+        mode3_endFlag = true;
+        Fram[8] = (uint8_t)(((mode2_endFlag << 1) & 0x03) | ((mode3_endFlag << 0 & 0x01)));
+        I2cFram.write(0x56, 8, Fram[8]);
+
+        delay(3000);
+        return true;
+
         /*case 42:
             return sendToMission(subject);
         case 43:
